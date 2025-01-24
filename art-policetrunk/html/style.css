@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
+
+body.ui-active {
+    background-color: rgba(0, 0, 0, 0.5); 
+    overflow: hidden; 
+}
+
+#trunk-ui {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    display: none;
+}
+
+#trunk-ui h1 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.weapon {
+    margin: 10px 0;
+    color: #ecf0f1;
+}
+
+.weapon-name {
+    color: #ffffff;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    background-color: #1c5988;
+}

@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: transparent;
+}
+
+#jail-ui {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+#jail-ui h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#jail-timer {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#jail-reason {
+    font-size: 18px;
+    margin-top: 10px;
+}

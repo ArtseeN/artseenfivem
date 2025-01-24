@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#mileageBox {
+    position: fixed;
+    bottom: 10px; /* Sağ alt köşe */
+    right: 10px;  /* Sağ alt köşe */
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black */
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    display: none; /* Başlangıçta gizle */
+}
+
+#vehicleMileage {
+    font-family: Arial, sans-serif;
+}

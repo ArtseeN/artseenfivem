@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Jail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="jail-ui">
+        <h1>Kalan Ceza Süren</h1>
+        <p id="jail-timer">0:00</p>
+        <p id="jail-reason"></p>
+    </div>
+    <script>
+        let jailTimerActive = false; 
+
+        window.addEventListener('message', function(event) {
+            const data = event.data;
+
+            if (data.type === "showJailTimer") {
+                document.getElementById("jail-ui").style.display = "block";
+                document.getElementById("jail-timer").innerText = formatTime(data.time);
+                document.getElementById("jail-reason").innerText = "Reason: " + data.reason;
+                jailTimerActive = true; 
+            }
+
+            if (data.type === "updateJailTimer") {
+                document.getElementById("jail-timer").innerText = formatTime(data.time);
+            }
+
+            if (data.type === "hideJailTimer") {
+                document.getElementById("jail-ui").style.display = "none";
+                jailTimerActive = false; 
+            }
+
+            if (data.type === "resetJailTimer") {
+                resetJailTimer(); 
+            }
+        });
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+        }
+
+        // Sayaç sıfırlama fonksiyonu
+        function resetJailTimer() {
+            if (jailTimerActive) {
+                document.getElementById("jail-timer").innerText = "0:00"; 
+                document.getElementById("jail-reason").innerText = ""; 
+                document.getElementById("jail-ui").style.display = "none";
+                jailTimerActive = false; 
+            }
+        }
+    </script>
+</body>
+</html>
