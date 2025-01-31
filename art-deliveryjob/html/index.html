@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Servisi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-motorcycle"></i>
+                <span>Hızlı Teslimat</span>
+            </div>
+            <div class="menu">
+                <button id="startJob" class="menu-btn active">
+                    <i class="fas fa-play"></i>
+                    Mesleğe Başla
+                </button>
+                <button id="endJob" class="menu-btn" disabled>
+                    <i class="fas fa-stop"></i>
+                    Mesleği Bitir
+                </button>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <span>Puan: <span id="rating">0</span></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Kazanç: <span id="earnings">0</span>₺</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="orders-container">
+                <h2>Aktif Siparişler</h2>
+                <div id="ordersList" class="orders-list">
+                    <!-- Siparişler buraya dinamik olarak eklenecek -->
+                </div>
+            </div>
+            
+            <div class="active-delivery" style="display: none;">
+                <h2>Aktif Teslimat</h2>
+                <div class="delivery-details">
+                    <div class="customer-info">
+                        <i class="fas fa-user"></i>
+                        <span id="customerName">Müşteri Adı</span>
+                    </div>
+                    <div class="address-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="deliveryAddress">Teslimat Adresi</span>
+                    </div>
+                    <div class="price-info">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span id="orderPrice">0₺</span>
+                    </div>
+                    <div class="timer-info">
+                        <i class="fas fa-clock"></i>
+                        <span id="deliveryTimer">5:00</span>
+                    </div>
+                    <button id="completeDelivery" class="complete-btn">
+                        Siparişi Tamamla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
