@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Polis GPS Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="gps-container" style="display: none;">
+        <div class="gps-header">
+            <span>Polis GPS Sistemi</span>
+            <button id="close-button">&times;</button>
+        </div>
+        <div class="gps-content">
+            <div class="input-group">
+                <label for="gps-code">Araç Kodu:</label>
+                <input type="text" id="gps-code" placeholder="Örn: 12A21" maxlength="10">
+            </div>
+            <button id="activate-gps">GPS'i Aktif Et</button>
+            <div class="button-group">
+                <button id="check-gps">GPS Listesi</button>
+                <button id="remove-gps">GPS Kaldır</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GPS Listesi Modal -->
+    <div id="gps-list-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Aktif GPS Listesi</span>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="gps-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GPS Kaldır Modal -->
+    <div id="remove-gps-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>GPS Kaldır</span>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="remove-code">Kaldırılacak GPS Kodu:</label>
+                    <input type="text" id="remove-code" placeholder="Örn: 12A21" maxlength="10">
+                </div>
+                <button id="confirm-remove">Kaldır</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
