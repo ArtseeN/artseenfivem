@@ -18,7 +18,7 @@ RegisterCommand('aracgps', function(source, args)
     end
 
     local playerData = QBCore.Functions.GetPlayerData()
-    if not (playerData.job.name == 'police' or playerData.job.name == 'sheriff') then
+    if not IsJobAllowed(playerData.job.name) then
         QBCore.Functions.Notify('Bu komutu kullanma yetkiniz yok!', 'error')
         return
     end
@@ -33,7 +33,7 @@ end)
 
 RegisterCommand('aracgpskontrol', function()
     local playerData = QBCore.Functions.GetPlayerData()
-    if not (playerData.job.name == 'police' or playerData.job.name == 'sheriff') then
+    if not IsJobAllowed(playerData.job.name) then
         QBCore.Functions.Notify('Bu komutu kullanma yetkiniz yok!', 'error')
         return
     end
@@ -56,7 +56,7 @@ RegisterCommand('aracgpskaldır', function(source, args)
     end
 
     local playerData = QBCore.Functions.GetPlayerData()
-    if not (playerData.job.name == 'police' or playerData.job.name == 'sheriff') then
+    if not IsJobAllowed(playerData.job.name) then
         QBCore.Functions.Notify('Bu komutu kullanma yetkiniz yok!', 'error')
         return
     end
@@ -69,7 +69,7 @@ end)
 function RefreshBlips()
     -- Yetki kontrolü
     local playerData = QBCore.Functions.GetPlayerData()
-    if not (playerData.job.name == 'police' or playerData.job.name == 'sheriff') then
+    if not IsJobAllowed(playerData.job.name) then
         for _, blip in pairs(blips) do
             RemoveBlip(blip)
         end
@@ -89,7 +89,7 @@ function RefreshBlips()
             local blip = AddBlipForEntity(vehicle)
             SetBlipSprite(blip, 1)
             SetBlipScale(blip, 0.8)
-            SetBlipColour(blip, data.job == 'police' and 38 or 5) -- Polis için mavi, Şerif için sarı
+            SetBlipColour(blip, Config.JobColors[data.job] or 1) -- Config'den renk al veya varsayılan
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentString(code)
             EndTextCommandSetBlipName(blip)
@@ -122,7 +122,7 @@ AddEventHandler('vehicle-gps:client:showGPSDetails', function(data)
                 data.args.data.model,
                 data.args.data.plate,
                 data.args.data.officerName,
-                data.args.data.job == 'police' and 'Polis' or 'Şerif'
+                Config.JobLabels[data.args.data.job] or data.args.data.job
             )
         },
         {
@@ -151,4 +151,14 @@ CreateThread(function()
         RefreshBlips()
         Wait(1000)
     end
-end) 
+end)
+
+-- Yetki kontrolü için yardımcı fonksiyon
+function IsJobAllowed(jobName)
+    for _, job in ipairs(Config.AllowedJobs) do
+        if jobName == job then
+            return true
+        end
+    end
+    return false
+end 

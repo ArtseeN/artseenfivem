@@ -28,7 +28,16 @@ AddEventHandler('vehicle-gps:server:requestGPSList', function()
     
     if not Player then return end
     
-    if Player.PlayerData.job.name ~= 'police' and Player.PlayerData.job.name ~= 'sheriff' then
+    local playerJob = Player.PlayerData.job.name
+    local isAllowed = false
+    for _, job in ipairs(Config.AllowedJobs) do
+        if playerJob == job then
+            isAllowed = true
+            break
+        end
+    end
+    
+    if not isAllowed then
         TriggerClientEvent('QBCore:Notify', src, 'Bu bilgilere erişim yetkiniz yok!', 'error')
         return
     end
@@ -41,7 +50,7 @@ AddEventHandler('vehicle-gps:server:requestGPSList', function()
                 data.model,
                 data.plate,
                 data.officerName,
-                data.job == 'police' and 'Polis' or 'Şerif'
+                Config.JobLabels[data.job] or data.job
             ),
             params = {
                 event = 'vehicle-gps:client:showGPSDetails',
