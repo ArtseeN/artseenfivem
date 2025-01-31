@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Polis MDT Sistemi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="mdt-container">
+
+        <div class="mdt-header">
+
+            <h1>POLİS BİLGİ SİSTEMİ</h1>
+
+            <div class="user-info">
+
+                <span>Memur: John Doe</span>
+
+                <span>Rozet No: #12345</span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="mdt-content">
+
+            <div class="menu-buttons">
+
+                <button class="menu-btn" data-section="person">Kişi Sorgula</button>
+
+                <button class="menu-btn" data-section="criminal">Sabıka Ekle</button>
+
+                <button class="menu-btn" data-section="vehicle">Araç Sorgula</button>
+
+                <button class="menu-btn" data-section="wanted">Arananlar</button>
+
+            </div>
+
+
+
+            <div class="results-section">
+
+                <h2>Sorgu Sonuçları</h2>
+
+                <div id="resultContainer"></div>
+
+            </div>
+
+
+
+            <!-- Sabıka Ekleme Formu -->
+
+            <div id="criminalAddForm" class="add-form" style="display: none;">
+
+                <h3>Yeni Sabıka Ekle</h3>
+
+                <div class="form-group">
+
+                    <input type="text" id="criminalName" placeholder="Ad Soyad" readonly>
+
+                    <input type="text" id="criminalCitizenId" placeholder="CitizenID" readonly>
+
+                    <input type="text" id="criminalReason" placeholder="Suç" required>
+
+                    <input type="text" id="criminalDate" placeholder="Tarih (GG.AA.YYYY)" required>
+
+                    <button onclick="addCriminal()" class="add-btn">Sabıka Ekle</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Kişi Bilgisi Ekleme/Güncelleme Formu -->
+
+            <div id="personAddForm" class="add-form" style="display: none;">
+
+                <h3>Kişi Bilgisi Ekle/Güncelle</h3>
+
+                <div class="form-group">
+
+                    <input type="text" id="personName" placeholder="Ad Soyad">
+
+                    <input type="text" id="personCitizenId" placeholder="CitizenID">
+
+                    <input type="text" id="personPhone" placeholder="Telefon Numarası">
+
+                    <input type="text" id="personBirthDate" placeholder="Doğum Tarihi (GG.AA.YYYY)">
+
+                    <input type="text" id="personAddress" placeholder="Adres">
+
+                    <input type="text" id="personImg" placeholder="Fotoğraf URL">
+
+                    <div class="image-preview" id="imagePreview"></div>
+
+                    <button id="addPersonBtn" class="add-btn">Kişi Bilgisi Ekle/Güncelle</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Arananlar Ekleme Formu -->
+
+            <div id="wantedAddForm" class="add-form" style="display: none;">
+
+                <h3>Yeni Aranan Ekle</h3>
+
+                <div class="form-group">
+
+                    <input type="text" id="wantedName" placeholder="Ad Soyad">
+
+                    <input type="text" id="wantedCitizenId" placeholder="CitizenID">
+
+                    <input type="text" id="wantedReason" placeholder="Aranma Sebebi">
+
+                    <input type="text" id="wantedDanger" placeholder="Tehlike Seviyesi (Düşük/Orta/Yüksek)">
+
+                    <input type="text" id="wantedImg" placeholder="Fotoğraf URL">
+
+                    <div class="image-preview" id="wantedImagePreview"></div>
+
+                    <button id="addWantedBtn" class="add-btn">Ekle</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+
+    <div id="customModal" class="modal" style="display: none;">
+
+        <div class="modal-content">
+
+            <h3 id="modalTitle">Modal Başlık</h3>
+
+            <div id="modalBody">
+
+                <input type="text" id="modalInput" placeholder="URL girin">
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button id="modalConfirm" class="add-btn">Onayla</button>
+
+                <button id="modalCancel" class="remove-btn">İptal</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html> 
+
