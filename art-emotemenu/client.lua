@@ -21,7 +21,6 @@ local bonePositions = {
     ['Bel Hizası'] = 11816
 }
 
--- Bone ID'den isim almak için tersine map
 local boneNames = {}
 for name, id in pairs(bonePositions) do
     boneNames[id] = name
@@ -44,7 +43,6 @@ local function AddStatus(data)
     return statusId
 end
 
--- Status silme fonksiyonu
 local function RemoveStatus(id)
     activeStatuses[id] = nil
     TriggerServerEvent('status:sync', activeStatuses)
@@ -129,7 +127,6 @@ local function ShowMainMenu()
         }
     }
 
-    -- Aktif yazıları menüye ekle
     for id, status in pairs(activeStatuses) do
         if GetGameTimer() - status.startTime < status.duration then
             table.insert(menuOptions, {
@@ -162,13 +159,13 @@ RegisterCommand('st', function()
     ShowMainMenu()
 end)
 
--- Server'dan gelen senkronizasyon
+
 RegisterNetEvent('status:syncClient')
 AddEventHandler('status:syncClient', function(newStatuses)
     activeStatuses = newStatuses
 end)
 
--- Statusları göstermek için thread
+
 CreateThread(function()
     while true do
         local wait = 0
@@ -196,7 +193,7 @@ CreateThread(function()
     end
 end)
 
--- 3D Text çizme fonksiyonu
+
 function DrawText3D(coords, text)
     local camCoords = GetGameplayCamCoords()
     local dist = #(coords - camCoords)
